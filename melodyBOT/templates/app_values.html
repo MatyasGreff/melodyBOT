@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Generate Melody!</legend>
+                <div class="form-group">
+                    {{ form.model.label(class="form-control-label") }}
+                    {{ form.model(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.num_steps.label(class="form-control-label") }}
+                    {{ form.num_steps(class="form-control form-control-lg") }}
+                </div>
+                <div class="col text-center">
+                <p>For samples, click here:</p>
+                <a class="btn btn-secondary" href="samples" role="button">Samples</a>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    {{ form.primer_melody.label() }}
+                    {{ form.primer_melody(class="form-control-file") }}
+                    {% if form.primer_melody.errors%}
+                        {% for error in form.primer_melody.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <small>Or simply press Generate! without choosing a primer melody, for generation based on a single note.</small>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            {% if generated_fname %}
+                <midi-player
+                    src="{{ generated_fname }}"
+                    sound-font visualizer="#myVisualizer">
+                </midi-player>
+                <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+                <midi-visualizer type="staff" id="myVisualizer"></midi-visualizer>
+                <a href="/my-link/">
+                <button type="button" class="btn btn-info">Save Melody
+                </button>
+                </a>
+            {% endif %}
+
+        </form>
+    </div>
+{% endblock content %}
+

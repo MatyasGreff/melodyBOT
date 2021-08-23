@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Saved Melodies Library</legend>
+                    <h4>Here you can find all your saved melodies.</h4>
+                    <div class="form-group">
+                        <h5>Total  number of stored melodies: {{ number_of_files }}</h5>
+                        {% for melody in saved_melodies_list %}
+                            <midi-player
+                            src="{{ melody }}"
+                            sound-font visualizer="#myVisualizer">
+                            </midi-player>
+                            <a href="{{ melody }}" download>
+                            <button type="button" class="btn btn-info">Download saved melody
+                            </button>
+                            </a>
+                            <form action="/delete_melody" method="post" role="form">
+                            <input type="hidden" id="del_mel" name="del_mel" value="{{ melody }}">
+                            <input type="submit" name="submit" value="Delete melody" class="btn btn-danger">
+                            </form>
+                        {% endfor %}
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

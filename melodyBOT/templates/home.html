@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <fieldset class="form-group">
+            <legend class="w-auto"><h1>Welcome to MelodyBOT</h1></legend>
+        </fieldset>
+        <div class="form-group">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">A web application that generates melodies using machine learning.</legend>
+          <div class="col text-center">
+                <h5>MIDI Player and samples are available for everyone, but for melody generation, please Log In here:</h5>
+                <a class="btn btn-primary" href="login" role="button">Login</a>
+                <h5>Not a member yet? Register here:</h5>
+                <a class="btn btn-primary" href="register" role="button">Register</a>
+          </div>
+        </div>
+        </fieldset>
+{% endblock content %}

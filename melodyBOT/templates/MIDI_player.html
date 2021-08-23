@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">MIDI Player</legend>
+                <div class="form-group">
+                    {{ form.melody.label() }}
+                    {{ form.melody(class="form-control-file") }}
+                    {% if form.melody.errors%}
+                        {% for error in form.melody.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            {% if saved_melody %}
+                <midi-player
+                    src="{{ saved_melody }}"
+                    sound-font visualizer="#myVisualizer">
+                </midi-player>
+                <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+                <midi-visualizer type="staff" id="myVisualizer"></midi-visualizer>
+            {% endif %}
+
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <fieldset class="form-group">
+            <legend class="w-auto"><h1>About Page</h1></legend>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">How MelodyBOT works</legend>
+            <div class="form-group">
+                <p>MelodyBOT aims to help composers/songwriters overcome writer's block. If you have a short MIDI melody, you can use melodyBOT to generate a continuation of it.</p>
+                <p>MelodyBOT is designed to complete short melodies, make sure your file is not longer than 10 seconds.</p>
+                <p>It is also possible to generate a fully random new melody. To do this, just choose a model and a length, then press generate.</p>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">General Info</legend>
+            <div class="form-group">
+                <p>This project is the work of Matyas Greff, X00151714</p>
+                <p>With any inquiries, email <h4>matyas.greff1991@gmail.com</h4> </p>
+                <p>This web application uses Tensorflow/Magenta for melody generation, for more info about the magenta project, see here:</p>
+                <a href="https://magenta.tensorflow.org/"><img src="../static/images/mag.png" alt="Magenta Project" style="width:155px;height:81.5px;"></a>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Models</legend>
+            <div class="form-group">
+                <p>MelodyBOT uses recurrent neural network(RNN) models provided by the Magenta melody_rnn project. </p>
+                <h4>Basic</h4>
+                <p>This configuration acts as a baseline for melody generation with an LSTM(Long Short-Term Memory) model. As the name suggests, expect basic melody outcomes.</p>
+                <h4>Lookback</h4>
+                <p>This model more easily repeats events from 1 and 2 bars ago. This results in melodies that wander less and have a more musical structure.</p>
+                <h4>Attention</h4>
+                <p>Attention allows the model to more easily access past information without having to store that information in the RNN cell's state. This allows the model to more easily learn longer term dependencies, and results in melodies that have longer arching themes.</p>
+                <br>
+                <p>For more technical, in depth info visit the melody_rnn Github page</p>
+                <a href="https://github.com/magenta/magenta/tree/main/magenta/models/melody_rnn"><img src="../static/images/ghub.png" alt="Magenta Project" style="width:155px;height:155px;></a>
+            </div>
+        </fieldset>
+    </div>
+{% endblock content %}

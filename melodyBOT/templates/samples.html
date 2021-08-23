@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Samples collection</legend>
+                    <h4>Simply download a melody of your liking and feed it to the generation model.</h4>
+                    <div class="form-group">
+                        {% for sample in samples_list %}
+                            <midi-player
+                            src="{{ sample }}"
+                            sound-font visualizer="#myVisualizer">
+                            </midi-player>
+                            <a href="{{ sample }}" download>
+                            <button type="button" class="btn btn-info">Download sample
+                            </button>
+                            </a>
+                        {% endfor %}
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}
